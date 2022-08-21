@@ -24,12 +24,31 @@
 
 ## Description
 
+Code Challenge Meegu
+The purpose of this code challenge is to test your knowledge of backend technologies with
+Typescript to assess your ability to create services with attention to detail,
+standards, organization, and code reusability.
+
+## Technologies used
+
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+[PrismaIO](https://www.prisma.io/)
+Sqlite
 
 ## Installation
 
 ```bash
 $ npm install
+```
+
+```bash
+$ // In .env put the DATABASE_URL
+```
+
+```bash
+  // run migrate
+  $ npx prisma migrate dev
+  // and give her a name
 ```
 
 ## Running the app
@@ -45,19 +64,6 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
@@ -71,4 +77,5 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
 # meegu-nest

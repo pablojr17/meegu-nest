@@ -1,22 +1,27 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/database/PrismaService';
 import { UserDTO } from './user.dto';
+import { checkAge } from 'src/Utils/checkAge';
+import { ViacepService } from 'src/services/viacep';
 
 @Injectable()
 export class UserService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService, private viacep: ViacepService) {}
 
-  async create(data: UserDTO) {
-    const userExists = await this.prisma.user.findFirst({
-      where: {
-        name: data.name,
-      },
-    });
-
-    if (userExists) throw new Error('User already exists');
+  async create(userData: UserDTO) {
+    const { zipcode, birthdate } = userData;
+    checkAge(birthdate);
+    const cep = await this.viacep.getCep(zipcode);
 
     const user = await this.prisma.user.create({
-      data,
+      data: {
+        ...userData,
+        birthdate: userData.birthdate,
+        street: cep.logradouro,
+        neighborhood: cep.bairro,
+        city: cep.localidade,
+        state: cep.uf,
+      },
     });
 
     return user;

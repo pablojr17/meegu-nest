@@ -34,6 +34,7 @@ standards, organization, and code reusability.
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 [PrismaIO](https://www.prisma.io/)
 Sqlite
+[Postman](https://www.getpostman.com/collections/477d4c4d117694a590f9)
 
 ## Installation
 
